@@ -1,2 +1,2 @@
 # practice
-Repo containing some random code written for practicing
+Repo with code written while trying out things
