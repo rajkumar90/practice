@@ -38,10 +38,10 @@ class MedianFinder_295 {
     
     public static void main(String[] args) {
     	MedianFinder_295 m = new MedianFinder_295();
-    	m.addNum(-3);
-    	m.addNum(5);
+    	m.addNum(1);
+    	m.addNum(2);
     	m.addNum(3);
-    	System.out.println(m.minHeap.peek());
+    	System.out.println(m.findMedian());
     }
 }
 

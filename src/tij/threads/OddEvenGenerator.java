@@ -2,17 +2,17 @@ package tij.threads;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class OddEvenGenerator {
-	public static void main(String[] args) throws InterruptedException {
-		Runnable even = new Thread(new EvenGenerator2());
-		Runnable odd = new Thread(new OddGenerator());
+	public static void main(String[] args) {
+		AtomicBoolean mutex = new AtomicBoolean(false);
 		
-		ExecutorService e = Executors.newCachedThreadPool();
-		e.execute(odd);
+		Runnable odd = new OddGen(mutex);
+		Runnable even = new EvenGen(mutex);
+		
+		ExecutorService e = Executors.newFixedThreadPool(2);
 		e.execute(even);
-		
-		TimeUnit.MILLISECONDS.sleep(1000);
+		e.execute(odd);
 	}
 }
